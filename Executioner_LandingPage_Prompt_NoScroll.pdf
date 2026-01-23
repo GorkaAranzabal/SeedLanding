@@ -1,0 +1,138 @@
+Copy/paste this **edited prompt** into Opus/Cursor. I kept it **as close as possible** to your or
+---
+## ✓ UPDATED PROMPT (Minimal Changes)
+Copy and paste the following prompt into an expert AI coding assistant to recreate this exact web
+Role & Objective: You are an expert Senior Frontend Engineer and UI/UX Designer specializing in "
+The Vibe: The aesthetic must be "Apple meets Lockheed Martin."
+Theme: Silver, Platinum, Black, and Electric Blue (No generic red/gold).
+Style: High-end glassmorphism, floating HUDs, "Skyframe" tactical overlays, and premium typograph
+Interaction: **NO SCROLLING AT ALL.** This is a **single-screen, one-page** experience. The websi
+Video-first immersion: The hero video plays immediately on load and loops, full-screen, covering
+Tech Stack:
+Framework: Next.js 14+ (App Router)
+Language: TypeScript
+Styling: Tailwind CSS (use standard V3 syntax/compatibility)
+Animation: Framer Motion
+Assets: Local video files (assume they are present in /public/videos/).
+Prerequisites (User will provide these files): Ensure the user knows to place these videos in pub
+hero/executioner-tactical-operations.mp4 (Hero background)
+(closeups videos still listed below, but **do not use them** in this version since there is no sc
+Step-by-Step Implementation Plan
+---
+## 1. Configuration & Global Styles
+tailwind.config.ts Define the premium silver/black palette.
+```ts
+import type { Config } from 'tailwindcss'
+const config: Config = {
+content: [
+'./pages/**/*.{js,ts,jsx,tsx,mdx}',
+'./components/**/*.{js,ts,jsx,tsx,mdx}',
+'./app/**/*.{js,ts,jsx,tsx,mdx}',
+],
+theme: {
+extend: {
+colors: {
+'exec-black': '#000000',
+'exec-carbon': '#121212',
+'exec-silver': '#E5E5E5',
+'exec-platinum': '#A0A0A0',
+'exec-blue': '#007AFF',
+'exec-white': '#FFFFFF',
+},
+fontFamily: {
+'space': ['Space Mono', 'monospace'],
+'rajdhani': ['Rajdhani', 'sans-serif'],
+},
+animation: {
+'spin-slow': 'spin-slow 10s linear infinite',
+}
+},
+},
+plugins: [],
+}
+export default config
+```
+app/globals.css Setup Tailwind V3 and custom utilities.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+--font-space: 'Space Mono', monospace;
+--font-rajdhani: 'Rajdhani', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family;=Rajdhani:wg
+}
+body {
+@apply bg-black text-white font-rajdhani antialiased;
+overflow: hidden; /* IMPORTANT: disable scrolling */
+}
+html, body {
+height: 100%;
+}
+.text-shadow { text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); }
+.dashed-line {
+background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);
+background-size: 1px 10px;
+background-repeat: repeat-y;
+}
+@keyframes spin-slow {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 10s linear infinite; }
+```
+---
+## 2. Data Layer
+data/droneData.ts
+```ts
+export const droneData = {
+hero: {
+title: "THE EXECUTIONER",
+subtitle: "Next-generation tactical autonomous drone system. 850 kW hybrid engine.",
+videoPath: "/videos/hero/executioner-tactical-operations.mp4",
+},
+};
+```
+---
+## 3. Core Components
+### REMOVE Navbar, tabs, and scrollytelling sections.
+There should be **NO NAVBAR**, **NO TABS**, and **NO additional sections**.
+### components/HeroSectionVideo.tsx (Single-screen full background video + one centered button)
+- Video should autoplay, loop, muted, full-screen background
+- Add premium HUD overlays subtly (optional), but keep the layout simple
+- Put **ONLY ONE BUTTON** in the center of the screen:
+**“JOIN WAITLIST”**
+- The button should be glassmorphic, premium, electric blue accent on hover
+- Clicking button should open a simple modal (or a minimal email input overlay) OR just link to `
+Example component structure:
+- Fullscreen video background
+- Gradient overlays top/bottom for readability
+- Center content:
+- Optional title/subtitle (can be subtle, but not required)
+- **JOIN WAITLIST button in the middle**
+---
+## 4. Page Assembly
+app/page.tsx should render only this single screen. No scroll. No extra sections.
+```ts
+import HeroSectionVideo from '@/components/HeroSectionVideo';
+export default function Home() {
+return (
+);
+}
+```
+---
+## Additional Requirements
+- The entire site must be **exactly one viewport** (100vh).
+- Must not scroll with mouse wheel / trackpad.
+- Video plays immediately and covers the background.
+- **Only one button** visible: **JOIN WAITLIST** centered.
+- No navigation tabs, no pricing, no footer, no extra sections.
+- Maintain “Apple meets Lockheed Martin” typography and glassmorphism.
+Generate this entire codebase for me now.
+Also include a short note reminding the user to place the hero video in:
+`/public/videos/hero/executioner-tactical-operations.mp4`
+---
+If you want, tell me whether the “Join Waitlist” should open:
+1) a clean email modal, or
+2) just a link to an external waitlist page (Typeform/beehiiv/etc.)
+…and I’ll tweak the prompt **one more time** with minimal changes.
