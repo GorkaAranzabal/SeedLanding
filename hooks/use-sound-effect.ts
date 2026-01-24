@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react';
 
-export function useUiSound() {
+export function useSoundEffect() {
   const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {

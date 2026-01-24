@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { seedData } from '@/data/seedData';
-import { useUiSound } from '@/hooks/use-ui-sound';
+import { useSoundEffect } from '@/hooks/use-sound-effect';
 
 export default function HeroSectionVideo() {
-  const { playHover, playClick } = useUiSound();
+  const { playHover, playClick } = useSoundEffect();
 
   useEffect(() => {
     const audio = new Audio('/audio/SeedMusicLoop.wav');
