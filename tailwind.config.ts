@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'exec-black': '#000000',
-        'exec-carbon': '#121212',
-        'exec-silver': '#E5E5E5',
-        'exec-platinum': '#A0A0A0',
-        'exec-blue': '#007AFF',
-        'exec-green': '#44cc44', // Stronger, more saturated green
-        'exec-white': '#FFFFFF',
+        'seed-black': '#000000',
+        'seed-carbon': '#121212',
+        'seed-silver': '#E5E5E5',
+        'seed-platinum': '#A0A0A0',
+        'seed-blue': '#007AFF',
+        'seed-green': '#44cc44',
+        'seed-white': '#FFFFFF',
       },
       fontFamily: {
         'space': ['Space Mono', 'monospace'],

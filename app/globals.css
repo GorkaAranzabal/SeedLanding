@@ -10,7 +10,7 @@
 }
 
 body {
-  @apply bg-exec-black text-exec-white font-rajdhani antialiased;
+  @apply bg-seed-black text-seed-white font-rajdhani antialiased;
   overflow: hidden; /* IMPORTANT: disable scrolling */
 }
 

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from 'react';
 
-export function useTacticalSound() {
+export function useUiSound() {
   const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
@@ -36,14 +36,14 @@ export function useTacticalSound() {
     osc.connect(gainNode);
     gainNode.connect(ctx.destination);
 
-    // Tactical "Blip" sound
+    // UI "Blip" sound
     // Slightly louder and sharper
     osc.type = 'sine';
     osc.frequency.setValueAtTime(1000, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(1400, ctx.currentTime + 0.08);
 
     // Envelope - Increased volume
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime); // Increased from 0.02
+    gainNode.gain.setValueAtTime(0.1, ctx.currentTime); 
     gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
 
     osc.start();
@@ -60,13 +60,13 @@ export function useTacticalSound() {
     osc.connect(gainNode);
     gainNode.connect(ctx.destination);
 
-    // Tactical "Confirm" sound
+    // UI "Confirm" sound
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(400, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15);
 
     // Envelope - Increased volume
-    gainNode.gain.setValueAtTime(0.15, ctx.currentTime); // Increased from 0.05
+    gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
 
     osc.start();
